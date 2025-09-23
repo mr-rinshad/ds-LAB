@@ -148,7 +148,6 @@ int main(){
 	   }
 
 
-
           void search(int key){
 		  struct node *ptr=head;
 		  int pos=0;
