@@ -6,7 +6,8 @@ int front = -1, rear = -1;
 
 // Function to insert an element
 void enqueue(int value) {
-    if ((front == 0 && rear == SIZE - 1) || (front == rear + 1)) {
+    if ((front == 0 && rear == SIZE - 1) || (front == rear + 1))
+    {
         printf("Queue is Full!\n");
         return;
     }
