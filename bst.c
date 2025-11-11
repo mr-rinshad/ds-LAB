@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Structure for a node (Linked list concept)
 struct node {
     int data;
     struct node *left, *right;
 };
 
-// Function to create a new node
+
 struct node* createNode(int value) {
     struct node* newNode = (struct node*)malloc(sizeof(struct node));
     newNode->data = value;
@@ -15,7 +14,7 @@ struct node* createNode(int value) {
     return newNode;
 }
 
-// Function to insert a node in BST
+
 struct node* insert(struct node* root, int value) {
     if (root == NULL)
         return createNode(value);
@@ -30,7 +29,7 @@ struct node* insert(struct node* root, int value) {
     return root;
 }
 
-// ✅ Fixed Search Function
+
 struct node* search(struct node* root, int key) {
     while (root != NULL) {
         if (key == root->data)
@@ -43,7 +42,7 @@ struct node* search(struct node* root, int key) {
     return NULL;
 }
 
-// Function for Inorder traversal (Left, Root, Right)
+
 void inorder(struct node* root) {
     if (root != NULL) {
         inorder(root->left);
@@ -52,7 +51,7 @@ void inorder(struct node* root) {
     }
 }
 
-// Function for Preorder traversal (Root, Left, Right)
+
 void preorder(struct node* root) {
     if (root != NULL) {
         printf("%d ", root->data);
@@ -61,7 +60,7 @@ void preorder(struct node* root) {
     }
 }
 
-// Function for Postorder traversal (Left, Right, Root)
+
 void postorder(struct node* root) {
     if (root != NULL) {
         postorder(root->left);
@@ -70,14 +69,14 @@ void postorder(struct node* root) {
     }
 }
 
-// Function to find the node with minimum value
+
 struct node* findMin(struct node* root) {
     while (root && root->left != NULL)
         root = root->left;
     return root;
 }
 
-// Function to delete a node
+
 struct node* deleteNode(struct node* root, int key) {
     if (root == NULL)
         return root;
@@ -87,7 +86,7 @@ struct node* deleteNode(struct node* root, int key) {
     else if (key > root->data)
         root->right = deleteNode(root->right, key);
     else {
-        // Node with one or no child
+        
         if (root->left == NULL) {
             struct node* temp = root->right;
             free(root);
@@ -98,7 +97,7 @@ struct node* deleteNode(struct node* root, int key) {
             return temp;
         }
 
-        // Node with two children
+        
         struct node* temp = findMin(root->right);
         root->data = temp->data;
         root->right = deleteNode(root->right, temp->data);
@@ -106,7 +105,7 @@ struct node* deleteNode(struct node* root, int key) {
     return root;
 }
 
-// Main function: Menu-driven program
+
 int main() {
     struct node* root = NULL;
     int choice, value, key;
